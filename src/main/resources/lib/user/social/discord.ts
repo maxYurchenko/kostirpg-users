@@ -61,7 +61,7 @@ function getDiscordData(id: string) {
     if (response.status === 200) {
       if (!response.body) return null;
       let data: UserData = JSON.parse(response.body);
-      if (data.id && data.username) return response;
+      if (data.id && data.username) return data;
     }
   }
   return null;

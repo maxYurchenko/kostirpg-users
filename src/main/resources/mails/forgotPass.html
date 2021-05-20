@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<div data-th-utext="${mailComponents.head}" data-th-remove="tag"></div>
+
+<body style="margin: 0px; padding: 0px">
+    <table border="0" cellpadding="0" cellspacing="0" align="center" width="570"
+        style="max-width: 570px; background: white;">
+        <div data-th-utext="${mailComponents.header}" data-th-remove="tag"></div>
+        <tr>
+            <td
+                style="font-size: 24px; font-family: Roboto; font-weight: bold; line-height: 1.33; color: #1d1f24; padding: 0 0 15px;">
+                Привет!
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 14px; font-family: Roboto; line-height: 1.71; color: #505050; padding: 0 0 25px;">
+                Перейдите по
+                <a data-th-href="${resetUrl}" style="color: #0095f8;">ссылке</a> чтоб
+                сменить пароль для вашего аккаунта.
+            </td>
+        </tr>
+        <div data-th-utext="${mailComponents.footer}" data-th-remove="tag"></div>
+    </table>
+</body>
+
+</html>

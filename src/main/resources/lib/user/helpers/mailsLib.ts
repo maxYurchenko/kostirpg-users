@@ -8,14 +8,14 @@ import * as sharedLib from "./sharedLib";
 export { sendMail };
 
 const mailsTemplates = {
-  userActivation: "../pages/mails/userActivation.html",
-  forgotPass: "../pages/mails/forgotPass.html"
+  userActivation: "../../../mails/userActivation.html",
+  forgotPass: "../../../mails/forgotPass.html"
 };
 
 const components = {
-  head: "../pages/mails/components/head.html",
-  header: "../pages/mails/components/header.html",
-  footer: "../pages/mails/components/footer.html"
+  head: "../../../mails/components/head.html",
+  header: "../../../mails/components/header.html",
+  footer: "../../../mails/components/footer.html"
 };
 
 function getMailComponents(params: MailComponentsParams) {

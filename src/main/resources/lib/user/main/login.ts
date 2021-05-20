@@ -1,4 +1,3 @@
-const thymeleaf = __non_webpack_require__("/lib/thymeleaf");
 const i18nLib = __non_webpack_require__("/lib/xp/i18n");
 const authLib = __non_webpack_require__("/lib/xp/auth");
 
@@ -31,12 +30,7 @@ function login(name: string, pass?: string, token?: boolean) {
   });
   if (loginResult.authenticated === true) {
     return {
-      html: thymeleaf.render(
-        resolve("../pages/components/header/headerUser.html"),
-        {
-          user: getCurrentUser()
-        }
-      ),
+      user: getCurrentUser(),
       exist: true,
       authenticated: true
     };
