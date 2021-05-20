@@ -1,1 +1,1 @@
-Randomizers application for KostiRPG
+User lib for kostirpg
