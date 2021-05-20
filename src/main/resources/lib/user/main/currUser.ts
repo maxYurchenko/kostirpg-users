@@ -2,7 +2,7 @@ const authLib = __non_webpack_require__("/lib/xp/auth");
 const contentLib = __non_webpack_require__("/lib/xp/content");
 const portal = __non_webpack_require__("/lib/xp/portal");
 
-const contextLib = __non_webpack_require__("./contextLib");
+import * as contextLib from "./../helpers/contextLib";
 
 import { checkRole } from "../utils/roles";
 import { createUserContentType } from "../utils/createContentType";
@@ -10,18 +10,19 @@ import { getImage } from "./image";
 
 import { User as KostiUser } from "../../../site/content-types/user/user";
 import { Content } from "enonic-types/content";
+import { UserAllData } from "../../types/user";
 
 export { getCurrentUser };
 
-function getCurrentUser() {
+function getCurrentUser(): UserAllData | null {
   const user = authLib.getUser();
   let userObj: Content<KostiUser>;
-  if (user && user.email && user.displayName) {
+  if (user && user.email) {
     const query = contentLib.query<KostiUser>({
       query: "data.email = '" + user.email + "'",
       start: 0,
       count: 1,
-      contentTypes: [app.name + ":user"]
+      contentTypes: [app.name + ":user", "com.myurchenko.kostirpg:user"]
     });
     if (!(query.hits && query.hits[0])) {
       userObj = contextLib.runAsAdminAsUser(user, function () {
@@ -39,7 +40,6 @@ function getCurrentUser() {
 
 function beautifyUser(userObj: Content<KostiUser>) {
   const notificationLib = require("./../utils/notificationLib");
-  if (!userObj?.data?.userImage) return null;
   return {
     url: portal.pageUrl({ id: userObj._id }),
     image: getImage(userObj.data.userImage, "block(32,32)"),

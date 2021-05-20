@@ -1,6 +1,6 @@
 import { User } from "enonic-types/auth";
 
-var contextLib = __non_webpack_require__("/lib/xp/context");
+var context = __non_webpack_require__("/lib/xp/context");
 
 export {
   runInDefault,
@@ -12,7 +12,7 @@ export {
 };
 
 function runAsAdmin(callback: () => any) {
-  return contextLib.run(
+  return context.run(
     {
       user: {
         login: "mvy"
@@ -24,7 +24,7 @@ function runAsAdmin(callback: () => any) {
 }
 
 function runAsAdminInDefault(callback: () => any) {
-  return contextLib.run(
+  return context.run(
     {
       repository: "com.enonic.cms.default",
       branch: "master",
@@ -35,7 +35,7 @@ function runAsAdminInDefault(callback: () => any) {
 }
 
 function runAsAdminAsUser(user: User, callback: () => any) {
-  return contextLib.run(
+  return context.run(
     {
       user: {
         login: user.login
@@ -47,7 +47,7 @@ function runAsAdminAsUser(user: User, callback: () => any) {
 }
 
 function runInDraft(callback: () => any) {
-  return contextLib.run(
+  return context.run(
     {
       branch: "draft"
     },
@@ -56,7 +56,7 @@ function runInDraft(callback: () => any) {
 }
 
 function runInDraftAsAdmin(callback: () => any) {
-  return contextLib.run(
+  return context.run(
     {
       repository: "com.enonic.cms.default",
       branch: "draft",
@@ -70,7 +70,7 @@ function runInDraftAsAdmin(callback: () => any) {
 }
 
 function runInDefault(callback: () => any) {
-  return contextLib.run(
+  return context.run(
     {
       repository: "com.enonic.cms.default",
       branch: "master"

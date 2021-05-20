@@ -30,7 +30,7 @@ function updateUserSocial(email: string, data: SocialMedia) {
     query: "data.email = '" + email + "'",
     count: 1,
     start: 0,
-    contentTypes: [app.name + ":user"]
+    contentTypes: [app.name + ":user", "com.myurchenko.kostirpg:user"]
   });
   if (query.total !== 1) return null;
   let user = query.hits[0];

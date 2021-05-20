@@ -1,5 +1,5 @@
 const contentLib = __non_webpack_require__("/lib/xp/content");
-const contextLib = __non_webpack_require__("./contextLib");
+import * as contextLib from "./../helpers/contextLib";
 import { User as KostiUser } from "../../../site/content-types/user/user";
 import { getCurrentUser } from "./currUser";
 
@@ -28,7 +28,7 @@ function editUser(data: UserUpdateData) {
       return node;
     }
   });
-  contextLib.runAsAdminAsUser(currUser, function () {
+  contextLib.runAsAdminAsUser(currUser.user, function () {
     contentLib.publish({
       keys: [user._id],
       sourceBranch: "master",

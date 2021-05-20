@@ -1,11 +1,11 @@
 const contentLib = __non_webpack_require__("/lib/xp/content");
 const portal = __non_webpack_require__("/lib/xp/portal");
 
-const contextLib = __non_webpack_require__("./contextLib");
-const utils = __non_webpack_require__("./utils");
+import * as contextLib from "./../helpers/contextLib";
 
 import * as hashLib from "./../helpers/hashLib";
 import { findUser } from "./helpers";
+import { getImage } from "./../main/image";
 
 import { Content } from "enonic-types/content";
 import { User as KostiUser } from "../../../site/content-types/user/user";
@@ -30,7 +30,7 @@ function getUserDataById(id: string) {
     return {
       displayName: "Пользователь удален",
       url: null,
-      image: utils.getImage(null, "block(32,32)"),
+      image: getImage(undefined, "block(32,32)"),
       _id: null,
       key: null
     };
@@ -40,7 +40,7 @@ function getUserDataById(id: string) {
     return {
       displayName: "Пользователь удален",
       url: null,
-      image: utils.getImage(null, "block(32,32)"),
+      image: getImage(undefined, "block(32,32)"),
       _id: null,
       key: null
     };
@@ -48,7 +48,7 @@ function getUserDataById(id: string) {
   return {
     displayName: user.displayName,
     url: portal.pageUrl({ id: user._id }),
-    image: utils.getImage({ id: user.data.userImage, scale: "block(32,32)" }),
+    image: getImage(user.data.userImage, "block(32,32)"),
     _id: user._id,
     key: getSystemUser(user.data.email, true)
   };

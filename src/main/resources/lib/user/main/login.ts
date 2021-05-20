@@ -1,8 +1,8 @@
 const thymeleaf = __non_webpack_require__("/lib/thymeleaf");
-const contextLib = __non_webpack_require__("./contextLib");
 const i18nLib = __non_webpack_require__("/lib/xp/i18n");
 const authLib = __non_webpack_require__("/lib/xp/auth");
 
+import * as contextLib from "./../helpers/contextLib";
 import { getCurrentUser } from "./currUser";
 import { findUser } from "./../utils/helpers";
 

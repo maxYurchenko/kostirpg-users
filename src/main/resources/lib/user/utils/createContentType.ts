@@ -2,10 +2,9 @@ const contentLib = __non_webpack_require__("/lib/xp/content");
 const portal = __non_webpack_require__("/lib/xp/portal");
 const common = __non_webpack_require__("/lib/xp/common");
 
-const permissions = __non_webpack_require__("./permissions");
-const contextLib = __non_webpack_require__("./contextLib");
+import * as contextLib from "./../helpers/contextLib";
 
-import { Content } from "enonic-types/content";
+import { Content, PermissionsParams } from "enonic-types/content";
 import { User as KostiUser } from "../../../site/content-types/user/user";
 
 export { createUserContentType };
@@ -33,7 +32,7 @@ function createUserContentType(
       key: user._id,
       inheritPermissions: false,
       overwriteChildPermissions: true,
-      permissions: permissions.default(userKey)
+      permissions: permission(userKey)
     });
     return user;
   });
@@ -44,4 +43,26 @@ function createUserContentType(
     targetBranch: "master"
   });
   return user;
+}
+
+function permission(user: string): Array<PermissionsParams> {
+  return [
+    {
+      principal: user,
+      allow: [
+        "READ",
+        "CREATE",
+        "MODIFY",
+        "PUBLISH",
+        "READ_PERMISSIONS",
+        "WRITE_PERMISSIONS"
+      ],
+      deny: ["DELETE"]
+    },
+    {
+      principal: "role:system.everyone",
+      allow: ["READ"],
+      deny: []
+    }
+  ];
 }

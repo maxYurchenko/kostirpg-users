@@ -1,8 +1,8 @@
-const contextLib = __non_webpack_require__("./contextLib");
 const authLib = __non_webpack_require__("/lib/xp/auth");
 const utils = __non_webpack_require__("/lib/util");
 
 export { addRole, checkRole };
+import * as contextLib from "./../helpers/contextLib";
 
 function addRole(roleId: string, userKey: string) {
   contextLib.runAsAdmin(function () {

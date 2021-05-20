@@ -1,6 +1,6 @@
 const authLib = __non_webpack_require__("/lib/xp/auth");
 
-const contextLib = __non_webpack_require__("./contextLib");
+import * as contextLib from "./../helpers/contextLib";
 
 import * as hashLib from "./../helpers/hashLib";
 import * as mailsLib from "./../helpers/mailsLib";

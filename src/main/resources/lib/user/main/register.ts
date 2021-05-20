@@ -3,7 +3,7 @@ const common = __non_webpack_require__("/lib/xp/common");
 const i18nLib = __non_webpack_require__("/lib/xp/i18n");
 const httpClientLib = __non_webpack_require__("/lib/http-client");
 
-const contextLib = __non_webpack_require__("./contextLib");
+import * as contextLib from "./../helpers/contextLib";
 
 import * as hashLib from "./../helpers/hashLib";
 import * as mailsLib from "./../helpers/mailsLib";

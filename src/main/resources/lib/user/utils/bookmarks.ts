@@ -1,7 +1,7 @@
 const contentLib = __non_webpack_require__("/lib/xp/content");
 const utils = __non_webpack_require__("/lib/util");
 
-const contextLib = __non_webpack_require__("./contextLib");
+import * as contextLib from "./../helpers/contextLib";
 import { getCurrentUser } from "../main/currUser";
 
 import { Content } from "enonic-types/content";
@@ -16,7 +16,7 @@ function addBookmark(contentId: string) {
     key: currUser.content._id,
     editor: userEditor
   });
-  contextLib.runAsAdminAsUser(currUser, function () {
+  contextLib.runAsAdminAsUser(currUser.user, function () {
     return contentLib.publish({
       keys: [user._id],
       sourceBranch: "master",
