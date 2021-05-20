@@ -23,7 +23,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.4",
     "cssnano": "^5.0.1",
-    "enonic-types": "^0.2.1",
+    "enonic-types": "^0.2.2",
     "file-loader": "^6.2.0",
     "glob": "^7.1.6",
     "mini-css-extract-plugin": "^1.5.0",
