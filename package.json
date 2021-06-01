@@ -21,7 +21,7 @@
     "clean-css": "^5.1.2",
     "clean-css-loader": "^3.0.0",
     "cross-env": "^7.0.3",
-    "css-loader": "^5.2.4",
+    "css-loader": "^5.2.6",
     "cssnano": "^5.0.1",
     "enonic-types": "^0.2.1",
     "file-loader": "^6.2.0",
