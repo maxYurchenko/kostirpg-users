@@ -5,17 +5,11 @@ const utils = __non_webpack_require__("/lib/util");
 
 import * as sharedLib from "./sharedLib";
 
-export { sendMail };
+export { sendUserMail };
 
 const mailsTemplates = {
-  userActivation: "../../../mails/userActivation.html",
-  forgotPass: "../../../mails/forgotPass.html"
-};
-
-const components = {
-  head: "../../../mails/components/head.html",
-  header: "../../../mails/components/header.html",
-  footer: "../../../mails/components/footer.html"
+  userActivation: "./templates/userActivation.html",
+  forgotPass: "./templates/forgotPass.html"
 };
 
 function getMailComponents(params: MailComponentsParams) {
@@ -27,13 +21,17 @@ function getMailComponents(params: MailComponentsParams) {
   }
   var site = sharedLib.getSite();
   return {
-    head: thymeleaf.render(resolve(components.head), { title: params.title }),
-    header: thymeleaf.render(resolve(components.header), { site: site }),
-    footer: thymeleaf.render(resolve(components.footer), {})
+    head: thymeleaf.render(resolve("./templates/components/head.html"), {
+      title: params.title
+    }),
+    header: thymeleaf.render(resolve("./templates/components/header.html"), {
+      site: site
+    }),
+    footer: thymeleaf.render(resolve("./templates/components/footer.html"), {})
   };
 }
 
-function sendMail(type: string, email: string, params: MailParams) {
+function sendUserMail(type: string, email: string, params: MailParams) {
   var mail = null;
   if (type === "forgotPass") {
     mail = getForgotPassMail(email, params);

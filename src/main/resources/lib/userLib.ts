@@ -17,8 +17,7 @@ import { resetPass, forgotPass, setNewPass } from "./user/utils/password";
 import {
   getSystemUser,
   getUserDataById,
-  activateUser,
-  sendConfirmationMail
+  activateUser
 } from "./user/utils/misc";
 
 //Main

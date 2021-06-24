@@ -6,13 +6,13 @@ const httpClientLib = __non_webpack_require__("/lib/http-client");
 import * as contextLib from "./../helpers/contextLib";
 
 import * as hashLib from "./../helpers/hashLib";
-import * as mailsLib from "./../helpers/mailsLib";
 
 import { updateUserSocial } from "./../social/socialUtils";
 import { createUserContentType } from "./../utils/createContentType";
 import { createUserImageObj } from "./image";
 import { checkUserExists } from "./../utils/helpers";
 import { login } from "./login";
+import { sendUserMail } from "../helpers/userMailslib";
 
 export { register };
 
@@ -79,7 +79,7 @@ function register(
       });
       return hashLib.saveHashForUser(mail, "registerHash");
     });
-    var sent = mailsLib.sendMail("userActivation", mail, {
+    var sent = sendUserMail("userActivation", mail, {
       hash: activationHash
     });
   }

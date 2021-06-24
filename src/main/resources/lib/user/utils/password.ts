@@ -3,7 +3,7 @@ const authLib = __non_webpack_require__("/lib/xp/auth");
 import * as contextLib from "./../helpers/contextLib";
 
 import * as hashLib from "./../helpers/hashLib";
-import * as mailsLib from "./../helpers/mailsLib";
+import { sendUserMail } from "../helpers/userMailslib";
 
 import { checkUserExists } from "./helpers";
 
@@ -28,7 +28,7 @@ function resetPass(email: string) {
   var hash = contextLib.runAsAdmin(function () {
     return hashLib.saveHashForUser(email, "resetPassHash");
   });
-  mailsLib.sendMail("forgotPass", email, { hash: hash });
+  sendUserMail("forgotPass", email, { hash: hash });
   return {
     status: 200,
     message: "Инструкции отправленны вам на почту."
