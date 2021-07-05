@@ -47,6 +47,10 @@
       <label>Facebook</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
+    <input name="telegram" type="TextLine">
+      <label>Telegram</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
     <input name="kosticonnect2021" type="Long">
       <label>Kosticonnect 2021</label>
       <occurrences minimum="0" maximum="1"/>
@@ -64,6 +68,10 @@
       <config>
         <allowContentType>article</allowContentType>
       </config>
+    </input>
+    <input name="kmgPlayer" type="CheckBox">
+      <label>KMG Player</label>
+      <occurrences minimum="0" maximum="1"/>
     </input>
   </form>
 </content-type>

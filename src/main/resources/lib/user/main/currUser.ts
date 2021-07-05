@@ -45,8 +45,10 @@ function beautifyUser(userObj: Content<KostiUser>) {
     image: getImage(userObj.data.userImage, "block(32,32)"),
     roles: {
       moderator: checkRole(["role:moderator", "role:system.admin"]),
-      gameMaster: checkRole(["role:gameMaster", "role:system.admin"]),
-      admin: checkRole(["role:system.admin"])
+      gameMaster: checkRole(["role:gameMaster"]),
+      admin: checkRole(["role:system.admin"]),
+      moscowGM: checkRole(["role:moscowgm"]),
+      moscowPlayer: checkRole(["role:moscow-player"])
     },
     notificationsCounter: notificationLib.getNotificationsForUser(userObj._id)
   };

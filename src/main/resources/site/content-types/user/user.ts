@@ -56,6 +56,11 @@ export interface User {
   facebook?: string;
 
   /**
+   * Telegram
+   */
+  telegram?: string;
+
+  /**
    * Kosticonnect 2021
    */
   kosticonnect2021?: number;
@@ -69,4 +74,9 @@ export interface User {
    * Bookmarks
    */
   bookmarks?: Array<string>;
+
+  /**
+   * KMG Player
+   */
+  kmgPlayer: boolean;
 }

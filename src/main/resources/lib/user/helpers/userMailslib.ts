@@ -8,8 +8,8 @@ import * as sharedLib from "./sharedLib";
 export { sendUserMail };
 
 const mailsTemplates = {
-  userActivation: "./templates/userActivation.html",
-  forgotPass: "./templates/forgotPass.html"
+  userActivation: "/templates/userActivation.html",
+  forgotPass: "/templates/forgotPass.html"
 };
 
 function getMailComponents(params: MailComponentsParams) {
@@ -21,13 +21,13 @@ function getMailComponents(params: MailComponentsParams) {
   }
   var site = sharedLib.getSite();
   return {
-    head: thymeleaf.render(resolve("./templates/components/head.html"), {
+    head: thymeleaf.render(resolve("/templates/components/head.html"), {
       title: params.title
     }),
-    header: thymeleaf.render(resolve("./templates/components/header.html"), {
+    header: thymeleaf.render(resolve("/templates/components/header.html"), {
       site: site
     }),
-    footer: thymeleaf.render(resolve("./templates/components/footer.html"), {})
+    footer: thymeleaf.render(resolve("/templates/components/footer.html"), {})
   };
 }
 

@@ -22,6 +22,7 @@ function editUser(data: UserUpdateData) {
       node.data.phone = data.phone ? data.phone : node.data.phone;
       node.data.address = data.address ? data.address : node.data.address;
       node.data.country = data.country ? data.country : node.data.country;
+      node.data.telegram = data.telegram ? data.telegram : node.data.telegram;
       node.data.postalCode = data.postalCode
         ? data.postalCode
         : node.data.postalCode;
@@ -49,4 +50,5 @@ interface UserUpdateData {
   address?: string;
   country?: string;
   postalCode?: string;
+  telegram?: string;
 }

@@ -5,7 +5,7 @@ const common = __non_webpack_require__("/lib/xp/common");
 import * as contextLib from "./../helpers/contextLib";
 
 import { Content, PermissionsParams } from "enonic-types/content";
-import { User as KostiUser } from "../../../site/content-types/user/user";
+import { User } from "../../../site/content-types/user/user";
 
 export { createUserContentType };
 
@@ -17,15 +17,16 @@ function createUserContentType(
 ) {
   let site: any = portal.getSiteConfig();
   var usersLocation = contentLib.get({ key: site.userLocation });
-  let user: Content<KostiUser> = contextLib.runInDraft(function () {
-    user = contentLib.create({
+  let user: Content<User> = contextLib.runInDraft(function () {
+    user = contentLib.create<User>({
       parentPath: usersLocation ? usersLocation._path : "/",
       name: name ? common.sanitize(name) : common.sanitize(displayName),
       displayName: displayName,
       contentType: app.name + ":user",
       language: "ru",
       data: {
-        email: mail
+        email: mail,
+        kmgPlayer: false
       }
     });
     contentLib.setPermissions({
