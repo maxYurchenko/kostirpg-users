@@ -6,6 +6,9 @@ plugins {
   id 'maven-publish'
 }
 
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
 app {
   name = "${appName}"
   displayName = "${appDisplayName}"
