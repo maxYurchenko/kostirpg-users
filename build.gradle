@@ -105,3 +105,6 @@ publishing {
     }
   }
 }
+
+apply plugin: 'maven'
+group = "${group}"
