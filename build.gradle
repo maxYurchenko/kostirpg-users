@@ -81,11 +81,6 @@ processResources {
 }
 
 jar {
-  exclude 'assets/styles/**/*.less'
-  exclude 'assets/styles/**/*.sass'
-  exclude 'assets/styles/**/*.scss'
-  exclude 'assets/styles/**/*.js'
-
   dependsOn += serverWebpack
   dependsOn += generateTypeScript
 }
