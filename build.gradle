@@ -6,9 +6,6 @@ plugins {
   id 'maven-publish'
 }
 
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
-
 app {
   name = "${appName}"
   displayName = "${appDisplayName}"
@@ -69,7 +66,13 @@ task serverWebpack( type: NodeTask, dependsOn: npmInstall ) {
 }
 
 jar {
+  exclude 'assets/styles/**/*.less'
+  exclude 'assets/styles/**/*.sass'
+  exclude 'assets/styles/**/*.scss'
+  exclude 'assets/styles/**/*.js'
+
   dependsOn += serverWebpack
+  dependsOn += generateTypeScript
 }
 
 jar.outputs.dir "${buildDir}/resources/main"
