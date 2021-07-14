@@ -1,5 +1,8 @@
+import { UserWithProfile } from "enonic-types/auth";
+
 const authLib = __non_webpack_require__("/lib/xp/auth");
 const textEncoding = __non_webpack_require__("/lib/text-encoding");
+const utils = __non_webpack_require__("/lib/util");
 
 export { activateUserHash, saveHashForUser, getUserByHash, generateHash };
 
@@ -30,11 +33,11 @@ function saveHashForUser(email: string, hashType: string): string {
 
 function getUserByHash(mail: string, hash: string, hashType: string) {
   const user = findUser(mail);
-  if (user === false) {
+  if (!user) {
     return false;
   }
   const userProfile: any = authLib.getProfile({
-    principalKey: user.key
+    key: user.key
   });
   if (userProfile && userProfile[hashType] == "1") {
     return true;
@@ -76,8 +79,8 @@ function findUser(name: string) {
     count: 1,
     query: 'email="' + name + '" OR login="' + name + '"'
   });
-  if (user && user.hits && user.hits[0]) {
+  if (user.hits.length > 0) {
     return user.hits[0];
   }
-  return false;
+  return null;
 }
