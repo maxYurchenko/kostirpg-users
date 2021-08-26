@@ -1,5 +1,3 @@
-import { UserWithProfile } from "enonic-types/auth";
-
 const authLib = __non_webpack_require__("/lib/xp/auth");
 const textEncoding = __non_webpack_require__("/lib/text-encoding");
 const utils = __non_webpack_require__("/lib/util");
