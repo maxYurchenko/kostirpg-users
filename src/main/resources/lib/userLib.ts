@@ -5,6 +5,7 @@ import { googleRegister } from "./user/social/google";
 
 import { checkRole, addRole } from "./user/utils/roles";
 import { createUserContentType } from "./user/utils/createContentType";
+import { findUserContentType } from "./user/utils/findUserContentType";
 import { uploadUserImage } from "./user/main/image";
 import { editUser } from "./user/main/edit";
 import { logout } from "./user/main/logout";
@@ -51,6 +52,7 @@ exports.checkIfBookmarked = checkIfBookmarked;
 exports.getUserDataById = getUserDataById;
 exports.getSystemUser = getSystemUser;
 exports.createUserContentType = createUserContentType;
+exports.findUserContentType = findUserContentType;
 
 //Password
 exports.setNewPass = setNewPass;

@@ -6,35 +6,47 @@ import * as contextLib from "./../helpers/contextLib";
 
 import { Content, PermissionsParams } from "enonic-types/content";
 import { User } from "../../../site/content-types/user/user";
+import { checkUserNameExists } from "../utils/helpers";
 
 export { createUserContentType };
 
 function createUserContentType(
   displayName: string,
   mail: string,
-  userKey: string,
-  name?: string
+  userKey?: string,
+  name?: string,
+  phone?: string
 ) {
   let site: any = portal.getSiteConfig();
-  var usersLocation = contentLib.get({ key: site.userLocation });
+  let usersLocation = contentLib.get({ key: site.userLocation });
+  let permissions = userKey ? permission(userKey) : null;
+  let userName = name ? common.sanitize(name) : common.sanitize(displayName);
+  let existingContentType = checkUserNameExists(userName);
+  if (existingContentType) {
+    var date = new Date();
+    userName = userName + "-" + date.getTime();
+  }
   let user: Content<User> = contextLib.runInDraft(function () {
     user = contentLib.create<User>({
       parentPath: usersLocation ? usersLocation._path : "/",
-      name: name ? common.sanitize(name) : common.sanitize(displayName),
+      name: userName,
       displayName: displayName,
       contentType: app.name + ":user",
       language: "ru",
       data: {
         email: mail,
-        kmgPlayer: false
+        kmgPlayer: false,
+        phone: phone
       }
     });
-    contentLib.setPermissions({
-      key: user._id,
-      inheritPermissions: false,
-      overwriteChildPermissions: true,
-      permissions: permission(userKey)
-    });
+    if (permissions) {
+      contentLib.setPermissions({
+        key: user._id,
+        inheritPermissions: false,
+        overwriteChildPermissions: true,
+        permissions: permissions
+      });
+    }
     return user;
   });
 

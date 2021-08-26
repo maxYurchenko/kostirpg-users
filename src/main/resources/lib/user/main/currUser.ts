@@ -48,7 +48,8 @@ function beautifyUser(userObj: Content<KostiUser>) {
       gameMaster: checkRole(["role:gameMaster"]),
       admin: checkRole(["role:system.admin"]),
       moscowGM: checkRole(["role:moscowgm"]),
-      moscowPlayer: checkRole(["role:moscow-player"])
+      moscowPlayer: checkRole(["role:moscow-player"]),
+      kyivGM: checkRole(["role:kyivgm"])
     },
     notificationsCounter: notificationLib.getNotificationsForUser(userObj._id)
   };
