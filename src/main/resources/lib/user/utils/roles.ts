@@ -10,7 +10,7 @@ function addRole(roleId: string, userKey: string) {
   });
 }
 
-function checkRole(roles: string | string[]) {
+function checkRole(roles: string | string[]): boolean {
   roles = utils.data.forceArray(roles);
   for (var i = 0; i < roles.length; i++) {
     if (authLib.hasRole(roles[i])) {

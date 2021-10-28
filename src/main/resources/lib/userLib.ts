@@ -20,6 +20,7 @@ import {
   getUserDataById,
   activateUser
 } from "./user/utils/misc";
+import { checkCurrentUserCityBoss } from "./user/main/checkCurrentUserCityBoss";
 
 //Main
 exports.login = login;
@@ -43,6 +44,7 @@ exports.jwtRegister = googleRegister;
 //Roles
 exports.checkRole = checkRole;
 exports.addRole = addRole;
+exports.checkCurrentUserCityBoss = checkCurrentUserCityBoss;
 
 //Other
 exports.findUser = findUser;
