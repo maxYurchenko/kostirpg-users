@@ -51,10 +51,6 @@
       <label>Telegram</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
-    <input name="kosticonnect2021" type="Long">
-      <label>Kosticonnect 2021</label>
-      <occurrences minimum="0" maximum="1"/>
-    </input>
     <input name="userImage" type="ImageSelector">
       <label>User image</label>
       <occurrences minimum="0" maximum="1"/>
@@ -71,6 +67,14 @@
     </input>
     <input name="kmgPlayer" type="CheckBox">
       <label>KMG Player</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
+    <input name="kosticonnect2021" type="Long">
+      <label>Kosticonnect 2021</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
+    <input name="kosticonnect2022" type="Long">
+      <label>Kosticonnect 2022</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
   </form>

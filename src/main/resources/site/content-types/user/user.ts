@@ -61,11 +61,6 @@ export interface User {
   telegram?: string;
 
   /**
-   * Kosticonnect 2021
-   */
-  kosticonnect2021?: number;
-
-  /**
    * User image
    */
   userImage?: string;
@@ -79,4 +74,14 @@ export interface User {
    * KMG Player
    */
   kmgPlayer: boolean;
+
+  /**
+   * Kosticonnect 2021
+   */
+  kosticonnect2021?: number;
+
+  /**
+   * Kosticonnect 2022
+   */
+  kosticonnect2022?: number;
 }
