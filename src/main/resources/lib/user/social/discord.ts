@@ -1,6 +1,7 @@
 const httpClientLib = __non_webpack_require__("/lib/http-client");
 const portal = __non_webpack_require__("/lib/xp/portal");
 const contentLib = __non_webpack_require__("/lib/xp/content");
+const utils = __non_webpack_require__("/lib/util");
 
 import { User } from "../../../site/content-types/user/user";
 import { SocialResponse } from "../../types/social";
@@ -25,7 +26,15 @@ function register(code: string, redirect?: string): SocialResponse | null {
   const user = getCurrentUser();
   const socialUser = data.id ? getUserBySocial({ discord: data.id }) : null;
   if (user && data && data.id) {
-    return updateUserSocial(user.content.data.email, { discord: data.id });
+    updateUserSocial(user.content.data.email, { discord: data.id });
+    return {
+      name: data.username,
+      email: user.content.data.email,
+      picture: data.avatar
+        ? "https://cdn.discordapp.com/avatars/" + data.id + "/" + data.avatar
+        : undefined,
+      otherData: { discord: data.id }
+    };
   } else if (socialUser && data && data.id) {
     return {
       name: data.username,

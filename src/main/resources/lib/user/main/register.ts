@@ -2,6 +2,7 @@ const authLib = __non_webpack_require__("/lib/xp/auth");
 const common = __non_webpack_require__("/lib/xp/common");
 const i18nLib = __non_webpack_require__("/lib/xp/i18n");
 const httpClientLib = __non_webpack_require__("/lib/http-client");
+const utils = __non_webpack_require__("/lib/util");
 
 import * as contextLib from "./../helpers/contextLib";
 
