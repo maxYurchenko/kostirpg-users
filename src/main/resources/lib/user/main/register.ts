@@ -14,6 +14,9 @@ import { createUserImageObj } from "./image";
 import { checkUserExists } from "./../utils/helpers";
 import { login } from "./login";
 import { sendUserMail } from "../helpers/userMailslib";
+import { Content } from "enonic-types/content";
+import { User } from "../../../site/content-types/user/user";
+import { UserAllData } from "../../types/user";
 
 export { register };
 
@@ -54,9 +57,16 @@ function register(
       email: mail
     });
   });
-  var userObj = contextLib.runAsAdminAsUser(user, function () {
-    return createUserContentType(displayName, mail, user.key, name);
-  });
+  const userContent: Content<User> = contextLib.runAsAdminAsUser(
+    user,
+    function () {
+      return createUserContentType(displayName, mail, user.key, name);
+    }
+  );
+  const kostiUser: UserAllData = {
+    content: userContent,
+    user: user
+  };
   if (image) {
     var response = httpClientLib.request({
       url: image,
@@ -64,7 +74,7 @@ function register(
     });
     var responseStream = response.bodyStream;
     contextLib.runAsAdmin(function () {
-      createUserImageObj(responseStream, userObj);
+      createUserImageObj(responseStream, kostiUser);
     });
   }
   if (otherData) {
@@ -86,7 +96,7 @@ function register(
   }
   if (tokenRegister) {
     return login(mail, pass, tokenRegister);
-  } else if (userObj) {
+  } else if (userContent) {
     return login(mail, pass);
   } else {
     return false;

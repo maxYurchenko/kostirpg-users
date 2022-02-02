@@ -16,7 +16,7 @@ function createUserContentType(
   userKey?: string,
   name?: string,
   phone?: string
-) {
+): Content<User> {
   let site: any = portal.getSiteConfig();
   let usersLocation = contentLib.get({ key: site.userLocation });
   let permissions = userKey ? permission(userKey) : null;
