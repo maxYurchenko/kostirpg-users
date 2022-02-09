@@ -13,8 +13,16 @@ import { register as reg } from "../main/register";
 export { register, getDiscordData, discordRegister };
 
 function discordRegister(token: string, redirect?: string) {
-  const data = register(token, redirect);
-  if (data) return reg(data.name, data.email, undefined, true, data.picture);
+  const data: SocialResponse | null = register(token, redirect);
+  if (data)
+    return reg(
+      data.name,
+      data.email,
+      undefined,
+      true,
+      data.picture,
+      data.otherData
+    );
   return null;
 }
 
@@ -76,7 +84,7 @@ function getDiscordData(id: string) {
   return null;
 }
 
-function getToken(code: string, redirect?: string) {
+function getToken(code: string, redirect?: string): Token | null {
   const site = portal.getSite();
   let data =
     "&redirect_uri=" +
@@ -99,7 +107,8 @@ function getToken(code: string, redirect?: string) {
   return JSON.parse(request.body);
 }
 
-function getUserDataForRegister(token: Token): UserData | null {
+function getUserDataForRegister(token: Token | null): UserData | null {
+  if (!token) return null;
   let request = httpClientLib.request({
     url: "https://discordapp.com/api/users/@me",
     method: "GET",
