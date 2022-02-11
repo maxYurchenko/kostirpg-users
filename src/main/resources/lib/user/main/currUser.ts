@@ -52,7 +52,8 @@ function beautifyUser(userObj: Content<KostiUser>) {
       kyivGM: checkRole(["role:kyivgm"]),
       kharkivGM: checkRole(["role:kharkivgm"]),
       spbGM: checkRole(["role:spbgm"]),
-      ekbGM: checkRole(["role:ekbgm"])
+      ekbGM: checkRole(["role:ekbgm"]),
+      turbomaster: checkRole(["role:turbomaster"])
     },
     notificationsCounter: notificationLib.getNotificationsForUser(userObj._id)
   };
