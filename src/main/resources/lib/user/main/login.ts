@@ -1,4 +1,3 @@
-const i18nLib = __non_webpack_require__("/lib/xp/i18n");
 const authLib = __non_webpack_require__("/lib/xp/auth");
 
 import * as contextLib from "./../helpers/contextLib";
@@ -17,10 +16,7 @@ function login(name: string, pass?: string, token?: boolean) {
   if (!user) {
     return {
       exist: false,
-      message: i18nLib.localize({
-        key: "global.user.userNotExists",
-        locale: "ru"
-      })
+      message: "Пользователь не найден."
     };
   }
   var loginResult = authLib.login({
@@ -37,10 +33,7 @@ function login(name: string, pass?: string, token?: boolean) {
   } else {
     return {
       exist: false,
-      message: i18nLib.localize({
-        key: "global.user.incorrectPass",
-        locale: "ru"
-      })
+      message: "Не верный пароль."
     };
   }
 }

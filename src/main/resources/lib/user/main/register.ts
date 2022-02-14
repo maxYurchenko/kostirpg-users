@@ -1,6 +1,5 @@
 const authLib = __non_webpack_require__("/lib/xp/auth");
 const common = __non_webpack_require__("/lib/xp/common");
-const i18nLib = __non_webpack_require__("/lib/xp/i18n");
 const httpClientLib = __non_webpack_require__("/lib/http-client");
 const utils = __non_webpack_require__("/lib/util");
 
@@ -43,10 +42,7 @@ function register(
     var date = new Date();
     name = name + "-" + date.getTime();
   } else if (exist.exist) {
-    exist.message = i18nLib.localize({
-      key: "global.user." + exist.type + "Exists",
-      locale: "ru"
-    });
+    exist.message = "Пользователь найден.";
     return exist;
   }
   var user = contextLib.runAsAdmin(function () {
@@ -82,7 +78,7 @@ function register(
       updateUserSocial(mail, otherData);
     });
   }
-  if (!tokenRegister && pass) {
+  /*if (!tokenRegister && pass) {
     var activationHash = contextLib.runAsAdmin(function () {
       authLib.changePassword({
         userKey: user.key,
@@ -93,7 +89,7 @@ function register(
     var sent = sendUserMail("userActivation", mail, {
       hash: activationHash
     });
-  }
+  }*/
   if (tokenRegister) {
     return login(mail, pass, tokenRegister);
   } else if (userContent) {
