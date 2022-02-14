@@ -79,7 +79,7 @@ function register(
       updateUserSocial(mail, otherData);
     });
   }
-  /*if (!tokenRegister && pass) {
+  if (!tokenRegister && pass) {
     var activationHash = contextLib.runAsAdmin(function () {
       authLib.changePassword({
         userKey: user.key,
@@ -87,10 +87,10 @@ function register(
       });
       return hashLib.saveHashForUser(mail, "registerHash");
     });
-    var sent = sendUserMail("userActivation", mail, {
+    /*var sent = sendUserMail("userActivation", mail, {
       hash: activationHash
-    });
-  }*/
+    });*/
+  }
   if (tokenRegister) {
     return login(mail, pass, tokenRegister);
   } else if (userContent) {
