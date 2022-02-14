@@ -42,7 +42,8 @@ function register(
     var date = new Date();
     name = name + "-" + date.getTime();
   } else if (exist.exist) {
-    exist.message = "Пользователь найден.";
+    exist.message =
+      "Пользователь с такой почтой или именем уже существует найден.";
     return exist;
   }
   var user = contextLib.runAsAdmin(function () {
